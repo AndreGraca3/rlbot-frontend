@@ -3,25 +3,60 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg-color: rgb(26, 35, 57);
+  --dark-bg-color: rgb(16, 25, 41);
+  --card-border: rgb(12, 12, 12);
+  --primary-color: blue;
+  --secondary-color: orange;
+  --bg-surface-odd: rgb(33 44 71);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  min-width: fit-content;
+  scroll-behavior: auto;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  flex-direction: column;
+  background-color: rgb(26, 35, 57);
+  font-family: inter;
+  color: white;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100vw;
+  min-width: fit-content;
+  scroll-behavior: auto;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+#nprogress .spinner-icon {
+  width: 18px !important;
+  height: 18px !important;
+
+  border-left-color: var(--primary-color) !important;
+  border-top-color: var(--primary-color) !important;
+
+  border-bottom-color: var(--secondary-color) !important;
+  border-right-color: var(--secondary-color) !important;
 }
