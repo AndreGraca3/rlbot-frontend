@@ -1,19 +1,27 @@
+import Players from "./Players";
 import { Suspense } from "react";
-import PlayersTable from "./PlayersTable";
 import TableSqueleton from "@/components/Loading/TableSqueleton";
+import PlayersFilters from "./PlayersFilters";
 
-export default function Players() {
+export default function PlayersPage({ searchParams }) {
+  const page = searchParams.page || 1;
+  const platform = searchParams.platform;
+  const timeWindow = searchParams.timeWindow;
+  const name = searchParams.name;
+  const filters = { platform, timeWindow, name };
+
   return (
     <div className="w-full flex-auto">
-      <div className="space-y-10">
+      <div className="space-y-6">
         <div className="space-y-2">
           <div className="text-3xl">Players</div>
           <div className="text-md opacity-70">
             Find someone you've played with.
           </div>
         </div>
+        <PlayersFilters queryParams={filters} />
         <Suspense fallback={<TableSqueleton />}>
-          <PlayersTable />
+          <Players page={page} filters={filters} />
         </Suspense>
       </div>
     </div>

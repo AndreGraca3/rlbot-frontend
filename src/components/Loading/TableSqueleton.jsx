@@ -8,7 +8,7 @@ export default function TableSqueleton() {
         <div
           style={{ animationDelay: `${i * 0.1}s` }}
           key={i}
-          className="flex border-t w-full h-6 bg-slate-800 animate-pulse"
+          className="flex border-t w-full h-8 bg-slate-700 animate-pulse"
         ></div>
       ))}
     </div>

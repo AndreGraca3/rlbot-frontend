@@ -1,4 +1,4 @@
-import tryFetch from "@/utils/http";
+import { tryFetch } from "@/utils/http";
 
 export async function getMaps() {
   /* await new Promise((res) => {

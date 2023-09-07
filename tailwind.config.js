@@ -13,7 +13,8 @@ module.exports = {
         "border-color": "var(--card-border)",
         "primary-color": "var(--primary-color)",
         "secondary-color": "var(--secondary-color)",
-        "bg-surface-odd": "var(--bg-surface-odd)"
+        "bg-surface-odd": "var(--bg-surface-odd)",
+        "highlight-color": "var(--highlight-color)",
       },
       animation: {
         "spin-slow": "spin-slow 10s linear infinite",

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import FlatTableEntry from "./FlatTableEntry";
 
 export default function FlatTable({ columns, rows }) {
   if (rows.length === 0)
@@ -21,30 +22,13 @@ export default function FlatTable({ columns, rows }) {
           );
         })}
       </div>
-      {rows.map((row, index) => {
-        return (
-          <div
-            style={{ animationDelay: `${index * 0.1}s` }}
-            className="hover:bg-slate-700 odd:bg-bg-surface-odd opacity-0 hover:opacity-70 border-t animate-fade-in-from-above"
-            key={index}
-          >
-            <Link className="w-full h-full flex" href={row.href}>
-              {Object.keys(row).map((key, keyIndex) =>
-                key === "href" ? (
-                  <></>
-                ) : (
-                  <div
-                    className="w-1/2 py-2 px-4 text-left text-sm md:text-base overflow-hidden text-ellipsis"
-                    key={keyIndex}
-                  >
-                    {row[key]}
-                  </div>
-                )
-              )}
-            </Link>
-          </div>
-        );
-      })}
+      {rows.map((row, index) => (
+        <FlatTableEntry
+          key={index}
+          index={index}
+          row={row}
+        />
+      ))}
     </div>
   );
 }

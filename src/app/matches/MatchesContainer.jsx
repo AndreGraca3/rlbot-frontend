@@ -16,6 +16,7 @@ export default async function MatchesContainer() {
       </div>
     );
   }
+
   return (
     <>
       {matches.map(async (match, i) => {

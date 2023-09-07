@@ -1,20 +1,12 @@
-import { getPlayers } from "@/actions/data/playerData";
-import FlatTable from "@/components/Tables/FlatTable";
-import MyToast from "@/components/Toast/MyToast";
-import { timeSince } from "@/utils/dates";
+"use client";
 import TableSqueleton from "@/components/Loading/TableSqueleton";
+import FlatTable from "@/components/Tables/FlatTable";
+import { timeSince } from "@/utils/dates";
 
-export default async function PlayersTable() {
-  const players = await getPlayers();
-  if (players.error) {
-    return (
-      <div>
-        <MyToast error={players.error} />
-        <TableSqueleton />
-      </div>
-    );
+export default function PlayersTable({ players }) {
+  if (!players) {
+    return <TableSqueleton />;
   }
-
   return (
     <FlatTable
       columns={["Name", "Platform", "Last Seen"]}
