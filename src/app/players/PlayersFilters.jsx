@@ -1,7 +1,7 @@
 "use client";
 
 import Selector from "@/components/Filters/Selector";
-import SearchBar from "@/components/Header/SearchBar";
+import SearchBar from "@/components/Filters/SearchBar";
 import { buildQueryParams } from "@/utils/http";
 import { useRouter } from "next/navigation";
 
@@ -18,10 +18,12 @@ export default function PlayersFilters({ queryParams }) {
   };
 
   const timeWindowQueries = {
-    queryName: "timeWindow",
+    queryName: "createdAfter",
     options: [
-      { name: "Last 24 Hours", query: "24h" },
-      { name: "Last 7 Days", query: "7d" },
+      { name: "Today", query: "1d" },
+      { name: "This Week", query: "7d" },
+      { name: "This Month", query: "1m" },
+      { name: "This Year", query: "1y" },
     ],
   };
 

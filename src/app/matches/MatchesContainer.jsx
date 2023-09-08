@@ -17,12 +17,19 @@ export default async function MatchesContainer() {
     );
   }
 
+  const matchesWithMaps = await Promise.all(
+    matches.map(async (match) => {
+      const mapImg = (await getMap(match.map_name)).imgUrl;
+      return { ...match, mapImg };
+    })
+  );
+
   return (
     <>
-      {matches.map(async (match, i) => {
-        const map = await getMap(match.map_name);
+      {matchesWithMaps.map((match, i) => {
         return (
           <Link
+            key={i}
             style={{ animationDelay: `${i * 0.1}s` }}
             className="h-fit py-0 opacity-0 animate-fade-in-from-above"
             href={`/matches/${match.id}`}
@@ -30,7 +37,7 @@ export default async function MatchesContainer() {
             <MatchContainer
               blueScore={match.blue_score}
               orangeScore={match.orange_score}
-              mapUrl={map.imgUrl}
+              mapUrl={match.mapImg}
               timeAgo={timeSince(match.created_at)}
             />
           </Link>

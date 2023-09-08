@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import MatchesStats from "./MatchesStats";
 import MatchesContainer from "./MatchesContainer";
 import ScrollDisplayer from "@/components/Displayers/ScrollDisplayer";
-import ImageSqueleton from "@/components/Loading/ImageSqueleton";
 
 export default function Matches() {
   return (
@@ -20,7 +19,7 @@ export default function Matches() {
               fallback={
                 <>
                   {Array.from({ length: 3 }, (_, i) => (
-                    <ImageSqueleton />
+                    <>Load</>
                   ))}
                 </>
               }

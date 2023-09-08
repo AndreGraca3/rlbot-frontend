@@ -1,11 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
+
 const SearchBar = ({ placeHolder, hideIcon, onChange = () => {} }) => {
+  const [text, setText] = useState();
+  const [search] = useDebounce(text, 750);
+
+  useEffect(() => {
+    if(search === undefined) return
+    onChange(search);
+  }, [search]);
+
   return (
     <div className="flex h-full bg-black rounded-lg p-1 border-transparent border-2 focus-within:animate-pulse-colors">
       <form action="/player" className="flex w-fit">
         <input
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => setText(e.target.value)}
           className="bg-black caret-white text-white text-sm w-40 focus:outline-none"
           placeholder={placeHolder}
         ></input>

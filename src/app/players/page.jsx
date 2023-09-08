@@ -6,9 +6,9 @@ import PlayersFilters from "./PlayersFilters";
 export default function PlayersPage({ searchParams }) {
   const page = searchParams.page || 1;
   const platform = searchParams.platform;
-  const timeWindow = searchParams.timeWindow;
+  const createdAfter = searchParams.createdAfter;
   const name = searchParams.name;
-  const filters = { platform, timeWindow, name };
+  const filters = { platform, createdAfter, name };
 
   return (
     <div className="w-full flex-auto">

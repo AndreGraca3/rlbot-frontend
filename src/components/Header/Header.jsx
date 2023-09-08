@@ -1,5 +1,5 @@
 import MyNavLink from "./MyNavLink";
-import SearchBar from "./SearchBar";
+import SearchBar from "../Filters/SearchBar";
 import ExpandedButton from "../../components/Buttons/ExpandedButton";
 
 const Header = () => {
