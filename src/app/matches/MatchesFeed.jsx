@@ -9,13 +9,7 @@ import PaginatedContainer from "@/components/Pagination/PaginatedContainer";
 import PaginationControl from "@/components/Pagination/PaginationControl";
 
 export default async function MatchesFeed({ skip, limit }) {
-  const realRsp = await getMatches();
-
-  const rsp = realRsp;
-  for (let i = 0; i < 10; i++) {
-    rsp.results.push(rsp.results[0]);
-    rsp.total++;
-  }
+  const rsp = await getMatches();
 
   if (rsp.error) {
     return (
