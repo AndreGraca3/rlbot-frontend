@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function ScrollDisplayer({ children }) {
   return (
     <div className="w-full h-60 rounded-md px-4">

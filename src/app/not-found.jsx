@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function NotFound({ code }) {
   return (
-    <div className="flex w-full h-full mx-10 gap-2">
+    <div className="flex flex-col md:flex-row w-full h-full gap-10">
       <Image
         className="justify-center"
         src={"/error-background.gif"}

@@ -19,7 +19,8 @@ module.exports = {
       animation: {
         "spin-slow": "spin-slow 10s linear infinite",
         "pulse-colors": "pulse-colors 5s alternate-reverse infinite",
-        "fade-in-from-above": "fade-in-from-above 0.5s forwards"
+        "fade-in-from-above": "fade-in-from-above 0.2s forwards",
+        "pop-up": "pop-up 0.5s forwards",
       },
       keyframes: {
         "spin-slow": {
@@ -35,15 +36,25 @@ module.exports = {
           },
         },
         "fade-in-from-above": {
-         "0%": {
-          opacity: "0",
-          transform: "translateY(-10px)"
-         }, 
-         "100%": {
-          opacity: "1",
-          transform: "translateY(0)",
-         }
-        }
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "pop-up": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0%)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(100%)",
+          },
+        },
       },
     },
   },

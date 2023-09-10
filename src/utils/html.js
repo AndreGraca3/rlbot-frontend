@@ -1,4 +1,4 @@
-import { MAX_ITEMS_PER_PAGE } from "@/config";
+import { SCROLL_MAX_ITEMS_PER_PAGE } from "@/config";
 
 export function getRandomWidth(minWidth = 10, maxWidth = 70) {
   const randomWidth =
@@ -7,9 +7,9 @@ export function getRandomWidth(minWidth = 10, maxWidth = 70) {
 }
 
 export function getLimit(page) {
-  return page ? page * MAX_ITEMS_PER_PAGE : MAX_ITEMS_PER_PAGE;
+  return page ? page * SCROLL_MAX_ITEMS_PER_PAGE : SCROLL_MAX_ITEMS_PER_PAGE;
 }
 
 export function hasMorePages(page, totalItems) {
-  return page * MAX_ITEMS_PER_PAGE < totalItems;
+  return page * SCROLL_MAX_ITEMS_PER_PAGE < totalItems;
 }

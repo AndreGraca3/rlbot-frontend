@@ -45,7 +45,7 @@ export default function Selector({
               <Link
                 className={`${
                   isSelected ? "bg-highlight-color " : ""
-                }h-10 flex items-center hover:bg-highlight-color hover:opacity-90 bg-dark-bg-color px-3.5 font-medium text-sm ${
+                }h-10 flex items-center hover:bg-highlight-color hover:opacity-90 bg-dark-bg-color px-3.5 font-medium text-sm text-center ${
                   index === 0 ? "group-first:rounded-l-lg " : ""
                 }${
                   index === queries.options.length - 1

@@ -13,7 +13,7 @@ const SearchBar = ({ placeHolder, hideIcon, onChange = () => {} }) => {
   }, [search]);
 
   return (
-    <div className="flex h-full bg-black rounded-lg p-1 border-transparent border-2 focus-within:animate-pulse-colors">
+    <div className="flex w-fit h-full bg-black rounded-lg p-1 border-transparent border-2 focus-within:animate-pulse-colors">
       <form action="/player" className="flex w-fit">
         <input
           onChange={(e) => setText(e.target.value)}

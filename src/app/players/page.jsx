@@ -5,10 +5,11 @@ import PlayersFilters from "./PlayersFilters";
 
 export default function PlayersPage({ searchParams }) {
   const page = searchParams.page || 1;
-  const platform = searchParams.platform;
-  const createdAfter = searchParams.createdAfter;
-  const name = searchParams.name;
-  const filters = { platform, createdAfter, name };
+  const filters = {
+    platform: searchParams.platform,
+    createdAfter: searchParams.createdAfter,
+    name: searchParams.name,
+  };
 
   return (
     <div className="w-full flex-auto">

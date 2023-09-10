@@ -15,11 +15,16 @@ export function buildQueryParams(params) {
   }
 
   const queryParams = Object.keys(params)
-    .filter((key) => params[key] !== null && params[key] !== undefined && params[key] !== "")
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    .join('&');
+    .filter(
+      (key) =>
+        params[key] !== null && params[key] !== undefined && params[key] !== ""
+    )
+    .map(
+      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+    )
+    .join("&");
 
-  return queryParams ? `?${queryParams}` : '';
+  return queryParams ? `?${queryParams}` : "";
 }
 
 export async function delay(ms) {

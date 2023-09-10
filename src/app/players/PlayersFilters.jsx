@@ -20,16 +20,16 @@ export default function PlayersFilters({ queryParams }) {
   const timeWindowQueries = {
     queryName: "createdAfter",
     options: [
-      { name: "Today", query: "1d" },
-      { name: "This Week", query: "7d" },
-      { name: "This Month", query: "1m" },
       { name: "This Year", query: "1y" },
+      { name: "This Month", query: "1m" },
+      { name: "This Week", query: "7d" },
+      { name: "Today", query: "1d" },
     ],
   };
 
   return (
-    <div className="flex justify-between items-center">
-      <div className="flex space-x-4">
+    <div className="flex flex-row flex-wrap gap-4 items-center justify-evenly">
+      <div className="flex flex-row flex-wrap gap-2">
         <Selector
           title="Platform"
           route="players"
