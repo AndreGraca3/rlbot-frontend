@@ -1,31 +1,32 @@
-import { Suspense } from "react";
 import MatchesFeed from "./MatchesFeed";
-import Skeleton from "@/components/Loading/Skeleton";
-import PaginatedContainer from "@/components/Pagination/PaginatedContainer";
-import PaginationControl from "@/components/Pagination/PaginationControl";
+import { Suspense } from "react";
+import Spinner from "@/components/Loading/Spinner";
+import { PAGINATION_MAX_ITEMS_PER_PAGE } from "@/config";
+import MatchesFilters from "./MatchesFilters";
 
-export default function MatchesPage({ searchParams }) {
-  const { skip, limit, createdAfter, map } = searchParams;
-  const filters = { createdAfter };
+export default async function MatchesPage({ searchParams }) {
+  const page = Number(searchParams.page) || 1;
+  const limit = Number(searchParams.limit) || PAGINATION_MAX_ITEMS_PER_PAGE;
+  const filters = {
+    createdAfter: searchParams.createdAfter || "7d",
+    mapName: searchParams.mapName,
+  };
 
   return (
     <div className="w-full flex-auto">
-      <div className="space-y-10">
+      <div className="space-y-2">
         <div className="space-y-2">
           <div className="text-3xl">Matches</div>
           <div className="text-md opacity-70">
             Find your top-performing matches.
           </div>
         </div>
-        <Suspense
-          fallback={
-            <PaginatedContainer>
-              <Skeleton count={9} />
-            </PaginatedContainer>
-          }
-        >
-          <MatchesFeed map={map} skip={skip} limit={limit} />
-        </Suspense>
+        <div className="flex flex-col justify-center items-center space-y-4">
+          <Suspense key={Math.random()} fallback={<Spinner />}>
+            <MatchesFilters queryParams={filters} />
+            <MatchesFeed page={page} limit={limit} filters={filters} />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

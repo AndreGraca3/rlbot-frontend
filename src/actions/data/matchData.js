@@ -9,3 +9,8 @@ export async function getMatches(skip, limit, filters) {
   const query = `rl/matches${buildQueryParams(queries)}`;
   return await tryFetch(query);
 }
+
+export async function getMatch(id) {
+  const query = `rl/matches/${id}`;
+  return await tryFetch(query);
+}

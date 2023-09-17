@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
       <body className={"flex flex-col min-h-screen " + inter.className}>
         <Header />
         <Toaster position="top-right" />
-        <main className="my-6 grow container mx-auto w-screen md:max-w-screen-xl px-4 py-2 flex flex-col justify-start items-stretch">
+        <main className="my-6 grow container mx-auto w-screen md:max-w-screen-xl px-4 py-2 flex flex-col justify-start overflow-hidden">
           <NextTopLoader color="linear-gradient(90deg,var(--primary-color),var(--secondary-color))" />
           {children}
         </main>

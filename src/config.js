@@ -1,3 +1,3 @@
 export const SCROLL_MAX_ITEMS_PER_PAGE = 20;
 
-export const PAGINATION_MAX_ITEMS_PER_PAGE = 9;
+export const PAGINATION_MAX_ITEMS_PER_PAGE = 8;

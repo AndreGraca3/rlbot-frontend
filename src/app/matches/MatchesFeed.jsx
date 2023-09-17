@@ -1,51 +1,45 @@
-import { getMatches } from "@/actions/data/matchData";
 import MatchBox from "./MatchBox";
-import { timeSince } from "@/utils/dates";
-import { getMap } from "@/actions/data/mapData";
-import Link from "next/link";
-import MyToast from "@/components/Toast/MyToast";
-import NotFound from "../not-found";
+import { timeSince, transformQueryToDate } from "@/utils/dates";
+import { getMatches } from "@/actions/data/matchData";
 import PaginatedContainer from "@/components/Pagination/PaginatedContainer";
 import PaginationControl from "@/components/Pagination/PaginationControl";
+import MyToast from "@/components/Toast/MyToast";
+import Spinner from "@/components/Loading/Spinner";
 
-export default async function MatchesFeed({ skip, limit }) {
-  const rsp = await getMatches();
+export default async function MatchesFeed({ page, limit, filters }) {
+  const skip = (page - 1) * limit;
 
-  if (rsp.error) {
+  const rsp = await getMatches(skip, limit, {
+    ...filters,
+    createdAfter: transformQueryToDate(filters.createdAfter),
+  });
+
+  if (rsp.error)
     return (
-      <div>
+      <>
+        <Spinner />
         <MyToast error={rsp.error} />
-        <NotFound code={500} />
-      </div>
+      </>
     );
-  }
 
-  const matches = await Promise.all(
-    rsp.results.map(async (match) => {
-      const mapImg = (await getMap(match.map_name)).imgUrl;
-      return { ...match, mapImg };
-    })
-  );
+  const maxPages = Math.max(1, Math.ceil(rsp.total / limit));
+  const matches = rsp.results;
 
   return (
     <div>
-      <PaginationControl route="matches" skip={parseInt(skip)} limit={limit} total={rsp.total} />
+      <PaginationControl page={page} maxPages={maxPages} filters={filters} />
       <PaginatedContainer>
         {matches.map((match, i) => {
           return (
-            <Link
+            <MatchBox
               key={i}
-              style={{ animationDelay: `${i * 0.08}s` }}
-              className="w-fit h-fit opacity-0 animate-pop-up"
-              href={`/matches/${match.id}`}
-            >
-              <MatchBox
-                blueScore={match.blue_score}
-                orangeScore={match.orange_score}
-                mapUrl={match.mapImg}
-                timeAgo={timeSince(match.created_at)}
-              />
-            </Link>
+              style={{ animationDelay: `${i * 0.03}s` }}
+              id={match.id}
+              blueScore={match.blue_score}
+              orangeScore={match.orange_score}
+              map={match.map_name}
+              timeAgo={timeSince(match.created_at)}
+            />
           );
         })}
       </PaginatedContainer>

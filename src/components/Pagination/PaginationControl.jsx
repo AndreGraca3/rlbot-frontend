@@ -1,39 +1,19 @@
-"use client";
-
-import { PAGINATION_MAX_ITEMS_PER_PAGE } from "@/config";
+import { buildQueryParams } from "@/utils/http";
 import PaginationButton from "./PaginationButton";
 import PaginationIndices from "./PaginationIndices";
-import { useRouter } from "next/navigation";
-import { buildQueryParams } from "@/utils/http";
 
-export default function PaginationControl({
-  route,
-  skip = 0,
-  limit = PAGINATION_MAX_ITEMS_PER_PAGE,
-  total,
-}) {
-  const router = useRouter();
-  const page = Math.floor(skip / limit) + 1;
-  const maxPages = Math.max(1, Math.ceil(total / limit));
+export default function PaginationControl({ page, maxPages, filters}) {
 
   return (
     <div className="flex w-full py-2 justify-center items-center gap-x-4">
       <PaginationButton
-        disabled={page === 1}
-        onClick={() => {
-          router.push(
-            `/${route}${buildQueryParams({ skip: skip - limit, limit })}`
-          );
-        }}
+        disabled={page <= 1}
+        href={`/matches${buildQueryParams({ page: page - 1, ...filters })}`}
       />
-      <PaginationIndices page={page} />
+      <PaginationIndices route="/matches" page={page} totalPages={maxPages} filters={filters} />
       <PaginationButton
-        disabled={page === maxPages}
-        onClick={() => {
-          router.push(
-            `/${route}${buildQueryParams({ skip: skip + limit, limit })}`
-          );
-        }}
+        disabled={page >= maxPages}
+        href={`/matches${buildQueryParams({ page: page + 1, ...filters })}`}
         isRight={true}
       />
     </div>

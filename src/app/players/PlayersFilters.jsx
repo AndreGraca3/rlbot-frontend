@@ -11,6 +11,7 @@ export default function PlayersFilters({ queryParams }) {
   const platformQueries = {
     queryName: "platform",
     options: [
+      { name: "All" },
       { name: "PC", query: "PC" },
       { name: "PS4", query: "PS4" },
       { name: "Xbox", query: "Xbox" },
@@ -20,6 +21,7 @@ export default function PlayersFilters({ queryParams }) {
   const timeWindowQueries = {
     queryName: "createdAfter",
     options: [
+      { name: "All Time", query: "all" },
       { name: "This Year", query: "1y" },
       { name: "This Month", query: "1m" },
       { name: "This Week", query: "7d" },
@@ -32,19 +34,17 @@ export default function PlayersFilters({ queryParams }) {
       <div className="flex flex-row flex-wrap gap-2">
         <Selector
           title="Platform"
-          route="players"
-          defaultName="All"
           queries={platformQueries}
           queryParams={queryParams}
         />
+
         <Selector
           title="Time Window"
-          route="players"
-          defaultName="All Time"
           queries={timeWindowQueries}
           queryParams={queryParams}
         />
       </div>
+
       <SearchBar
         placeHolder="Player Name..."
         onChange={(text) => {

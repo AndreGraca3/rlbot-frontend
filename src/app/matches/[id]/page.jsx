@@ -1,5 +1,13 @@
-export default function Match({params}) {
+import { getMatch } from "@/actions/data/matchData";
+
+export default async function Match({ params }) {
+  const match = await getMatch(params.id);
   return (
-    <div>This was match {params.id}</div>
-  )
+    <div>
+      <div>This was a great match</div>
+      <div>
+        {JSON.stringify(match)}
+      </div>
+    </div>
+  );
 }

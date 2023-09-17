@@ -4,10 +4,10 @@ import TableSqueleton from "@/components/Loading/TableSqueleton";
 import PlayersFilters from "./PlayersFilters";
 
 export default function PlayersPage({ searchParams }) {
-  const page = searchParams.page || 1;
+  const page = Number(searchParams.page) || 1;
   const filters = {
     platform: searchParams.platform,
-    createdAfter: searchParams.createdAfter,
+    createdAfter: searchParams.createdAfter || "7d",
     name: searchParams.name,
   };
 

@@ -1,4 +1,5 @@
 "use client";
+
 import TableSqueleton from "@/components/Loading/TableSqueleton";
 import FlatTable from "@/components/Tables/FlatTable";
 import { timeSince } from "@/utils/dates";
