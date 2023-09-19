@@ -1,15 +1,10 @@
-"use client";
-
-import Link from "next/link";
 import FlatTableEntry from "./FlatTableEntry";
+import EmptyResourceWarning from "../Warnings/EmptyResourceWarning";
 
 export default function FlatTable({ columns, rows }) {
   if (rows.length === 0)
     return (
-      <div className="h-full items-center text-center text-red-600 font-semibold opacity-90 justify-center">
-        Nothing to display at the moment. Go play some more to populate this
-        area!
-      </div>
+      <EmptyResourceWarning />
     );
   return (
     <div className="border-2 shadow-md border-gray-950 rounded-lg max-w-xl mx-auto overflow-hidden">

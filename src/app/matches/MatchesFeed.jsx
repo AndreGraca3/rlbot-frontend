@@ -3,8 +3,9 @@ import { timeSince, transformQueryToDate } from "@/utils/dates";
 import { getMatches } from "@/actions/data/matchData";
 import PaginatedContainer from "@/components/Pagination/PaginatedContainer";
 import PaginationControl from "@/components/Pagination/PaginationControl";
-import MyToast from "@/components/Toast/MyToast";
+import MyToast from "@/components/Warnings/MyToast";
 import Spinner from "@/components/Loading/Spinner";
+import EmptyResourceWarning from "@/components/Warnings/EmptyResourceWarning";
 
 export default async function MatchesFeed({ page, limit, filters }) {
   const skip = (page - 1) * limit;
@@ -24,6 +25,8 @@ export default async function MatchesFeed({ page, limit, filters }) {
 
   const maxPages = Math.max(1, Math.ceil(rsp.total / limit));
   const matches = rsp.results;
+
+  if (matches.length === 0) return <EmptyResourceWarning />;
 
   return (
     <div>

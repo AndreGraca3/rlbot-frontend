@@ -15,7 +15,7 @@ const Header = () => {
     { name: "🏠 Home", href: "/" },
     { name: "📊 Stats", href: "/stats" },
     { name: "🙋‍♂️ Players", href: "/players" },
-    { name: "🎮 Matches", href: "/matches" },
+    { name: "⚽️ Matches", href: "/matches" },
   ].map((link, i) => (
     <MyNavLink
       key={i}

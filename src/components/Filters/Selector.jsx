@@ -16,7 +16,7 @@ export default function Selector({ title, queries, queryParams }) {
 
   return (
     <nav className="flex flex-col flex-nowrap justify-start items-start">
-      <div className="px-0.5 pb-1 text-secondary text-sm">{title}</div>
+      <label className="px-0.5 pb-1 text-secondary text-sm">{title}</label>
       <ol className="flex flex-row rounded-lg shadow-md">
         {queries.options.map((option, index) => {
           const isSelected = option.query === currentFilterValue;

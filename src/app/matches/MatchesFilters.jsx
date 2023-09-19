@@ -1,8 +1,10 @@
 import { getMaps } from "@/actions/data/mapData";
 import DropdownSelector from "@/components/Filters/DropdownSelector";
+import { filters } from "@/utils/http";
 
 export default async function MatchesFilters({ queryParams }) {
   const maps = await getMaps();
+  if (maps.error) return;
 
   const mapQueries = {
     queryName: "mapName",
@@ -14,10 +16,17 @@ export default async function MatchesFilters({ queryParams }) {
   });
 
   return (
-    <div className="flex flex-row flex-wrap gap-4 items-center justify-evenly">
-      <div className="flex flex-row flex-wrap gap-2">
-        <DropdownSelector title="Map" queries={mapQueries} queryParams={queryParams} />
-      </div>
+    <div className="flex flex-row flex-wrap gap-4">
+      <DropdownSelector
+        title="🗺️ Map"
+        queries={mapQueries}
+        queryParams={queryParams}
+      />
+      <DropdownSelector
+        title={filters.timeWindowQueries.title}
+        queries={filters.timeWindowQueries}
+        queryParams={queryParams}
+      />
     </div>
   );
 }

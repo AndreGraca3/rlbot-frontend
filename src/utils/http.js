@@ -32,3 +32,27 @@ export async function delay(ms) {
     setTimeout(resolve, ms);
   });
 }
+
+export const filters = {
+  timeWindowQueries: {
+    title: "🕒 Time Window",
+    queryName: "createdAfter",
+    options: [
+      { name: "All Time", query: "all" },
+      { name: "This Year", query: "1y" },
+      { name: "This Month", query: "1m" },
+      { name: "This Week", query: "7d" },
+      { name: "Today", query: "1d" },
+    ],
+  },
+  platformQueries: {
+    title: "🎮 Platform",
+    queryName: "platform",
+    options: [
+      { name: "All" },
+      { name: "PC", query: "PC" },
+      { name: "PS4", query: "PS4" },
+      { name: "Xbox", query: "Xbox" },
+    ],
+  },
+};

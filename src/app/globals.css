@@ -7,13 +7,14 @@
   --dark-bg-color: rgb(16, 25, 41);
   --card-border: rgb(12, 12, 12);
   --primary-color: blue;
-  --secondary-color: orange;
+  --secondary-color: rgb(255, 149, 0);
   --bg-surface-odd: rgb(33 44 71);
   --highlight-color: rgba(59,130,246,.5);
 }
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {

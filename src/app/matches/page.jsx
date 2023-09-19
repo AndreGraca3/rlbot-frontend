@@ -14,7 +14,7 @@ export default async function MatchesPage({ searchParams }) {
 
   return (
     <div className="w-full flex-auto">
-      <div className="space-y-2">
+      <div className="space-y-4">
         <div className="space-y-2">
           <div className="text-3xl">Matches</div>
           <div className="text-md opacity-70">
