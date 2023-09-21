@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { Listbox, Transition } from "@headlessui/react";
 import { buildQueryParams } from "@/utils/http";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Icons } from "../Icons";
 
 export default function DropdownSelector({ title, queries, queryParams }) {
-
   const generateLinkHref = (option) => {
     const newParams = { ...queryParams };
     if (option.query) {
@@ -18,16 +17,18 @@ export default function DropdownSelector({ title, queries, queryParams }) {
     return buildQueryParams(newParams);
   };
 
-  const selected = queries.options.find(o => o.query == queryParams[queries.queryName]);
+  const selected = queries.options.find(
+    (o) => o.query == queryParams[queries.queryName]
+  );
 
   return (
-    <Listbox as="div" className="relative">
+    <Listbox>
       {({ open }) => (
-        <>
+        <div className="relative">
           <Listbox.Label className="block px-0.5 pb-1 text-secondary text-sm">
             {title}
           </Listbox.Label>
-          <Listbox.Button className="w-full h-10 bg-dark-bg-color relative rounded-lg pl-3 pr-10 font-medium text-left text-sm shadow-md md:hover:bg-highlight-color focus:outline-none focus-visible:ring-2">
+          <Listbox.Button className="relative w-full h-10 bg-dark-bg-color rounded-lg pl-3 pr-10 font-medium text-left text-sm shadow-md md:hover:bg-highlight-color focus:outline-none focus-visible:ring-2">
             {selected?.name}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <svg
@@ -55,31 +56,30 @@ export default function DropdownSelector({ title, queries, queryParams }) {
           >
             <Listbox.Options
               as="div"
-              className="z-50 absolute translate-y-2 max-h-96 bg-dark-bg-color rounded shadow-md overflow-y-auto overscroll-contain focus:outline-none"
+              className="z-50 absolute w-full translate-y-2 max-h-96 bg-dark-bg-color rounded text-sm shadow-lg overflow-y-auto focus:outline-none"
             >
               {queries.options.map((q, i) => {
                 const isSelected = q.name === selected?.name;
                 return (
                   <Listbox.Option as={Fragment} key={i}>
-                    <Link
-                      className="flex p-2 w-full md:hover:bg-highlight-color focus:bg-secondary-color focus:outline-none rounded"
-                      href={generateLinkHref(q)}
-                    >
-                      {isSelected && <Icons.checkMark />}
-                      <p
-                        className={`${
-                          isSelected ? "font-semibold" : ""
-                        } ml-2 truncate`}
-                      >
-                        {q.name}
-                      </p>
+                    <Link href={generateLinkHref(q)}>
+                      <div className="relative hover:bg-highlight-color h-10 flex items-center pl-10 pr-4 cursor-pointer select-none">
+                        <span className="flex truncate leading-10 font-normal">
+                          {q.name}
+                        </span>
+                        {isSelected && (
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-brand-500">
+                            <Icons.checkMark />
+                          </span>
+                        )}
+                      </div>
                     </Link>
                   </Listbox.Option>
                 );
               })}
             </Listbox.Options>
           </Transition>
-        </>
+        </div>
       )}
     </Listbox>
   );

@@ -15,6 +15,16 @@ export default async function MatchesFilters({ queryParams }) {
     mapQueries.options.push({ name: map.name, query: map.name });
   });
 
+  const playlistQueries = {
+    queryName: "playlist",
+    options: [
+      { name: "All" },
+      { name: "1V1 Duel Ranked", query: "1v1" },
+      { name: "2V2 Doubles Ranked", query: "2v2" },
+      { name: "3V3 Standard Ranked", query: "3v3" },
+    ],
+  };
+
   return (
     <div className="flex flex-row flex-wrap gap-4">
       <DropdownSelector
@@ -25,6 +35,11 @@ export default async function MatchesFilters({ queryParams }) {
       <DropdownSelector
         title={filters.timeWindowQueries.title}
         queries={filters.timeWindowQueries}
+        queryParams={queryParams}
+      />
+      <DropdownSelector
+        title="🎮 Playlist"
+        queries={playlistQueries}
         queryParams={queryParams}
       />
     </div>

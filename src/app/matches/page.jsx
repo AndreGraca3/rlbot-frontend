@@ -10,6 +10,7 @@ export default async function MatchesPage({ searchParams }) {
   const filters = {
     createdAfter: searchParams.createdAfter || "7d",
     mapName: searchParams.mapName,
+    playlist: searchParams.playlist,
   };
 
   return (
