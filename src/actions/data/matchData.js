@@ -6,11 +6,11 @@ export async function getMatches(skip, limit, filters) {
     limit,
     ...filters,
   };
-  const query = `rl/matches${buildQueryParams(queries)}`;
+  const query = `/matches${buildQueryParams(queries)}`;
   return await tryFetch(query);
 }
 
 export async function getMatch(id) {
-  const query = `rl/matches/${id}`;
+  const query = `/matches/${id}`;
   return await tryFetch(query);
 }

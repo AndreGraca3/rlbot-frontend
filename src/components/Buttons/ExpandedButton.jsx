@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const ExpandedButton = ({ title, href, color }) => {
+const ExpandedButton = ({ title, href, color, children }) => {
   return (
     <Link href={href} className="h-fit">
       <button
@@ -10,6 +10,7 @@ const ExpandedButton = ({ title, href, color }) => {
         }
       >
         {title}
+        {children}
       </button>
     </Link>
   );

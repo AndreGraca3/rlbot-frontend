@@ -12,6 +12,16 @@
   --highlight-color: rgba(59,130,246,.5);
 }
 
+@layer utilities {
+  .animation-playing {
+    animation-play-state: running;
+  }
+
+  .animation-paused {
+    animation-play-state: paused;
+  }
+}
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;

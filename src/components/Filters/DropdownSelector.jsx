@@ -56,14 +56,14 @@ export default function DropdownSelector({ title, queries, queryParams }) {
           >
             <Listbox.Options
               as="div"
-              className="z-50 absolute w-full translate-y-2 max-h-96 bg-dark-bg-color rounded text-sm shadow-lg overflow-y-auto focus:outline-none"
+              className="z-50 absolute w-fit translate-y-2 max-h-96 bg-dark-bg-color rounded text-sm shadow-lg overflow-y-auto focus:outline-none"
             >
               {queries.options.map((q, i) => {
                 const isSelected = q.name === selected?.name;
                 return (
                   <Listbox.Option as={Fragment} key={i}>
-                    <Link href={generateLinkHref(q)}>
-                      <div className="relative hover:bg-highlight-color h-10 flex items-center pl-10 pr-4 cursor-pointer select-none">
+                    <Link  className="relative hover:bg-highlight-color h-10 flex items-center pl-10 pr-4 cursor-pointer select-none" href={generateLinkHref(q)}>
+                      <div>
                         <span className="flex truncate leading-10 font-normal">
                           {q.name}
                         </span>

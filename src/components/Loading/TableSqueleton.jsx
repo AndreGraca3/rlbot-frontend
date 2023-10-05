@@ -4,7 +4,7 @@ export default function TableSqueleton() {
       <div className="flex w-full py-2 bg-dark-bg-color justify-center font-semibold">
         <span className="animate-pulse">Loading...</span>
       </div>
-      {Array.from({ length: 10 }, (_, i) => (
+      {Array.from({ length: 3 }, (_, i) => (
         <div
           style={{ animationDelay: `${i * 0.1}s` }}
           key={i}

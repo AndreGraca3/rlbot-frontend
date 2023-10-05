@@ -10,7 +10,7 @@ export default function PlayersFilters({ queryParams }) {
   const router = useRouter();
 
   return (
-    <div className="flex flex-row flex-wrap gap-4 items-center justify-evenly">
+    <div className="flex flex-row flex-wrap gap-4 items-center justify-evenly mb-4">
       <Selector
         title={filters.platformQueries.title}
         queries={filters.platformQueries}

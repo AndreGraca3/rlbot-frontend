@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function tryFetch(path) {
   try {
-    const res = await axios.get("http://localhost:8080/" + path);
+    const res = await axios.get(process.env.BACKEND_URL + path);
     return res.data;
   } catch (e) {
     return { error: e.response?.data?.message || e.message };

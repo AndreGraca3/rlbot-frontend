@@ -1,4 +1,5 @@
 import { getMaps } from "@/actions/data/mapData";
+import { getPlaylists } from "@/actions/data/playlistData";
 import DropdownSelector from "@/components/Filters/DropdownSelector";
 import { filters } from "@/utils/http";
 
@@ -15,15 +16,17 @@ export default async function MatchesFilters({ queryParams }) {
     mapQueries.options.push({ name: map.name, query: map.name });
   });
 
+  const playlists = await getPlaylists();
+  if (playlists.error) return;
+
   const playlistQueries = {
     queryName: "playlist",
-    options: [
-      { name: "All" },
-      { name: "1V1 Duel Ranked", query: "1v1" },
-      { name: "2V2 Doubles Ranked", query: "2v2" },
-      { name: "3V3 Standard Ranked", query: "3v3" },
-    ],
+    options: [{ name: "All" }],
   };
+
+  playlists.forEach((playlist) => {
+    playlistQueries.options.push({ name: playlist.name, query: playlist.name });
+  });
 
   return (
     <div className="flex flex-row flex-wrap gap-4">

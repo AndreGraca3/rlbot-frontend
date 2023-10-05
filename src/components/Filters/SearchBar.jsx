@@ -13,7 +13,7 @@ const SearchBar = ({ placeHolder, hideIcon, route, onChange = () => {} }) => {
   const ref = useRef();
 
   useEffect(() => {
-    if (!search) return;
+    if(!search) return
     onChange(search);
   }, [search]);
 

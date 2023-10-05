@@ -1,9 +1,9 @@
-import { tryFetch } from "@/utils/http";
+import { delay, tryFetch } from "@/utils/http";
 
 export async function getMaps() {
-  return await tryFetch("rl/maps");
+  return await tryFetch("/maps");
 }
 
 export async function getMap(name) {
-  return await tryFetch(`rl/maps/${name}`);
+  return await tryFetch(`/maps/${name}`);
 }

@@ -19,14 +19,14 @@ module.exports = {
       animation: {
         "spin-slow": "spin-slow 10s linear infinite",
         "pulse-colors": "pulse-colors 5s alternate-reverse infinite",
+        "pulse-red": "pulse-red 3s alternate-reverse linear infinite",
         "fade-in-from-above": "fade-in-from-above 0.2s forwards",
-        "pop-up": "pop-up 0.3s forwards",
+        "pop-up": "pop-up 0.2s forwards",
         "pop-up-transparent": "pop-up-transparent 0.3s forwards",
       },
       keyframes: {
         "spin-slow": {
-          "0%, 70%": { transform: "rotateY(0deg)" },
-          "100%": { transform: "rotateY(360deg)" },
+          "to": { transform: "rotate(360deg)" },
         },
         "pulse-colors": {
           "0%": {
@@ -36,10 +36,18 @@ module.exports = {
             border: "2px solid blue",
           },
         },
+        "pulse-red": {
+          "0%": {
+            backgroundColor: "#ff0000",
+          },
+          "100%": {
+            backgroundColor: "#660000",
+          },
+        },
         "fade-in-from-above": {
           "0%": {
             opacity: "0",
-            transform: "translateY(-10px)",
+            transform: "translateY(-20px)",
           },
           "100%": {
             opacity: "1",

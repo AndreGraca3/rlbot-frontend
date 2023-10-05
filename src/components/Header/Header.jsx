@@ -29,7 +29,7 @@ const Header = () => {
     <nav className="md:mt-4 md:bg-transparent bg-bg-surface-odd p-2 flex w-screen justify-center items-center relative">
       <button
         onClick={() => setIsOpen(true)}
-        className="z-20 left-2 absolute rounded flex md:hidden p-2 focus:outline-none focus-visible:ring-2"
+        className="z-20 left-2 absolute rounded flex md:hidden p-2 focus:outline-none focus-visible:ring-2 hover:ring-2"
       >
         <Hamburguer />
       </button>
@@ -69,7 +69,14 @@ const Header = () => {
       </Transition.Root>
 
       <div className="flex justify-center items-center gap-x-4">
-        <ExpandedButton title="RLBot" href="/" color={"bg-secondary-color"} />
+        <div className="relative inline-flex items-center">
+          <ExpandedButton title="RLBot" href="/" color={"bg-secondary-color"}>
+            <span className="absolute top-4 animate-pulse-red text-xs text-white p-1 rounded-full">
+              BETA
+            </span>
+          </ExpandedButton>
+        </div>
+
         <div className="hidden md:flex items-center h-full">
           <div className="gap-2 items-center md:mr-14">{links.slice(1)}</div>
           <SearchBar route="/players" placeHolder="Search Player..." />
